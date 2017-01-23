@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Garage.RL.Pages.Authentication.GreetingPage">
+
+  <Grid x:Name="greetingPageGrid" Margin="10">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="2*"/>
+      <RowDefinition Height="4*"/>
+      <RowDefinition Height="3*"/>
+    </Grid.RowDefinitions>
+    <Label Text="Welcome to Garage!" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0"/>
+    <Image Source="title.png" Aspect="AspectFit" Grid.Row="1"/>
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="4*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <StackLayout Grid.Column="1" >
+        <Button Text="Sign In" Clicked="SignInButtonClicked"/>
+        <Button Text="Sign Up" Clicked="SignUpButtonClicked"/>
+      </StackLayout>
+    </Grid>
+  </Grid>
+</ContentPage>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Garage.RL.Configuration;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Garage.RL.WinPhone
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
-            LoadApplication(new Garage.RL.App());
+            LoadApplication(new RL.App(new AppConfigurator()));
         }
 
         /// <summary>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Garage.RL.Pages.Authentication.SignUpPage">
+  <ScrollView>
+    <StackLayout x:Name="signUppageStackLayout" Margin="10">
+      <Label Text="User account creating:" FontSize="Medium" HorizontalOptions="Start" Grid.Row="0"/>
+      <Entry x:Name="nameEntry" Placeholder="Name"/>
+      <Entry x:Name="loginEntry" Placeholder="Login"/>
+      <Entry x:Name="email" Placeholder="Email"/>
+      <Entry x:Name="passwordEntry" IsPassword="True" Placeholder="Password"/>
+      <Entry x:Name="passwordConfirmationEntry" IsPassword="True" Placeholder="Confirm password"/>
+      <Label Text="{Binding Source={x:Reference Name=drivingExperienceSlider}, Path=Value, StringFormat='Driving experience: {0}'}" 
+             HorizontalOptions="Start" 
+             FontSize="Medium"/>
+      <Slider x:Name="drivingExperienceSlider" ValueChanged="DrivingExpirienceSliderValueChanged" Minimum="0" Maximum="100"/>
+      <Grid Grid.Row="2" Padding="0,40,0,40">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="4*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Column="1" >
+          <Button Text="Sign Up" Clicked="SignUpButtonClicked"/>
+        </StackLayout>
+      </Grid>
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

@@ -1,48 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using Garage.RL.Configuration;
+using Garage.RL.Pages;
 using Xamarin.Forms;
 
 namespace Garage.RL
 {
     public class App : Application
     {
-        public App()
-        {
-            // The root page of your application
-            var content = new ContentPage
-            {
-                Title = "Garage.RL",
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
+        #region Ctor
 
-            MainPage = new NavigationPage(content);
+        public App(IAppConfigurator configurator)
+        {
+            configurator.SetUp();
+            MainPage = new NavigationPage(new MainProfilePage());
         }
 
-        protected override void OnStart()
-        {
-            // Handle when your app starts
-        }
-
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
-        }
+        #endregion
     }
 }
