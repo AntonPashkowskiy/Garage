@@ -2,39 +2,67 @@
 using System;
 using Xamarin.Forms;
 
-namespace Garage.RL.Behaviours.TextFields
+namespace Garage.RL.Behaviors.TextFields
 {
-    public class ValueRequiredBehavior: Behavior<Entry>
+    public class ValueRequiredBehavior: BaseValidatorBehavior<Entry>
     {
+        #region Fields
+
+        private Entry _bindableEntry;
+
+        #endregion
+
         #region Protected Methods
 
-        protected override void OnAttachedTo(Entry bindable)
+        protected override void OnAttachedTo(Entry bindableEntry)
         {
-            bindable.TextChanged += BindableObjectTextChanged;
-            base.OnAttachedTo(bindable);
+            _bindableEntry = bindableEntry;
+            _bindableEntry.Unfocused += BindableObjectTextFieldUnfocused;
+            base.OnAttachedTo(bindableEntry);
         }
 
-        protected override void OnDetachingFrom(Entry bindable)
+        protected override void OnDetachingFrom(Entry bindableEntry)
         {
-            bindable.TextChanged -= BindableObjectTextChanged;
-            base.OnDetachingFrom(bindable);
+            _bindableEntry.Unfocused -= BindableObjectTextFieldUnfocused;
+            _bindableEntry = default(Entry);
+            base.OnDetachingFrom(bindableEntry);
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public override void Validate()
+        {
+            ValidateEntry(_bindableEntry);
         }
 
         #endregion
 
         #region Events Handlers
 
-        private void BindableObjectTextChanged(object sender, EventArgs eventArgs)
+        private void BindableObjectTextFieldUnfocused(object sender, EventArgs eventArgs)
         {
             var entry = sender as Entry;
 
-            if (string.IsNullOrWhiteSpace(entry.Text))
+            ValidateEntry(entry);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void ValidateEntry(Entry entry)
+        {
+            IsValid = !string.IsNullOrWhiteSpace(entry.Text);
+
+            if (IsValid)
             {
-                BehaviorStyleUtil.SetInvalidStyleForTextField(entry);
+                BehaviorStyleUtil.SetValidStyleForEntry(entry);
             }
             else
             {
-                BehaviorStyleUtil.SetValidStyleForTextField(entry);
+                BehaviorStyleUtil.SetInvalidStyleForEntry(entry);
             }
         }
 

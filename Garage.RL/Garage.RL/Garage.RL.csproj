@@ -36,6 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Behaviors\BaseValidatorBehavior.cs" />
+    <Compile Include="Behaviors\TextFields\EmailValidBehavior.cs" />
+    <Compile Include="Behaviors\TextFields\ValueRequiredBehavior.cs" />
+    <Compile Include="Behaviors\TextFields\TextEqualBehavior.cs" />
     <Compile Include="Configuration\AppConfigurator.cs" />
     <Compile Include="Configuration\IAppConfigurator.cs" />
     <Compile Include="Constants\AccountConstants.cs" />
@@ -55,6 +59,8 @@
       <DependentUpon>MainProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Behaviours\BehaviorStyleUtil.cs" />
+    <Compile Include="Utilities\Behaviours\BehaviorValidationUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PCLCrypto, Version=0.5.0.0, Culture=neutral, PublicKeyToken=d4421c8a4786956c, processorArchitecture=MSIL">
@@ -115,9 +121,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utilities\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

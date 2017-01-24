@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Garage.RL.Utilities.Behaviours
 {
@@ -11,14 +6,16 @@ namespace Garage.RL.Utilities.Behaviours
     {
         #region Public Methods
 
-        public static void SetInvalidStyleForTextField(Entry textField)
+        public static void SetInvalidStyleForEntry(Entry textField)
         {
-
+            textField.PlaceholderColor = Color.Red;
+            textField.TextColor = Color.Red;
         }
 
-        public static void SetValidStyleForTextField(Entry textField)
+        public static void SetValidStyleForEntry(Entry textField)
         {
-
+            textField.PlaceholderColor = Color.Default;
+            textField.TextColor = Color.Default;
         }
 
         #endregion
