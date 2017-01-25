@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Garage.BLL.Services.Interfaces.Authentication;
 using Xamarin.Auth;
 
 namespace Garage.RL.Managers
@@ -12,6 +8,8 @@ namespace Garage.RL.Managers
         private static bool _isUserAuthenticated;
 
         #region Properties
+
+        public static IAuthenticationService AuthenticationService { get; set; }
 
         public static bool IsUserAuthenticated
         {

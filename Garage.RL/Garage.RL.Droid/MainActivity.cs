@@ -2,6 +2,8 @@
 using Android.Content.PM;
 using Android.OS;
 using Garage.RL.Configuration;
+using XLabs.Ioc;
+using Garage.RL.Droid.Infrastructure;
 
 namespace Garage.RL.Droid
 {
@@ -12,11 +14,12 @@ namespace Garage.RL.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
             base.OnCreate(bundle);
-
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App(new AppConfigurator()));
+
+            var dependencyResolver = DependencyInjectionManager.GetDependencyResolver();
+            Resolver.SetResolver(dependencyResolver);
+            LoadApplication(new App(new AppConfigurator(dependencyResolver)));
         }
     }
 }

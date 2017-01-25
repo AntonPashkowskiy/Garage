@@ -1,18 +1,7 @@
 ﻿using Garage.RL.Configuration;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
+using Garage.RL.WinPhone.Infrastructure;
 using Windows.UI.Xaml.Navigation;
+using XLabs.Ioc;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,11 +14,13 @@ namespace Garage.RL.WinPhone
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Required;
 
-            this.NavigationCacheMode = NavigationCacheMode.Required;
+            var dependencyResolver = DependencyInjectionManager.GetDependencyResolver();
+            Resolver.SetResolver(dependencyResolver);
 
-            LoadApplication(new RL.App(new AppConfigurator()));
+            LoadApplication(new RL.App(new AppConfigurator(dependencyResolver)));
         }
 
         /// <summary>
