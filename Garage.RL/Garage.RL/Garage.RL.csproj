@@ -138,6 +138,10 @@
       <Project>{a9003977-a981-4492-ae7d-36f19920487b}</Project>
       <Name>Garage.BLL.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Garage.Core\Garage.Core.csproj">
+      <Project>{0d5a7ae2-e64c-4269-9473-38544c4436dd}</Project>
+      <Name>Garage.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

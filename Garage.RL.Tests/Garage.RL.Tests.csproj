@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\AuthenticationManagerTests.cs" />
     <Compile Include="Models\Authentication\SignInViewModelTests.cs" />
     <Compile Include="Models\Authentication\SignUpViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +60,10 @@
     <ProjectReference Include="..\Garage.BLL.Services\Garage.BLL.Services.csproj">
       <Project>{a9003977-a981-4492-ae7d-36f19920487b}</Project>
       <Name>Garage.BLL.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Garage.Core\Garage.Core.csproj">
+      <Project>{0D5A7AE2-E64C-4269-9473-38544C4436DD}</Project>
+      <Name>Garage.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Garage.RL\Garage.RL\Garage.RL.csproj">
       <Project>{83e0aed6-609c-4725-a461-f708b24c0e5b}</Project>

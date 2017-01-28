@@ -1,11 +1,17 @@
 ﻿using Garage.BLL.Services.Interfaces.Authentication;
-using Xamarin.Auth;
+using Garage.Core.Utils;
+using Garage.RL.Models.Authentication;
+using System.Threading.Tasks;
 
 namespace Garage.RL.Managers
 {
     public static class AuthenticationManager
     {
-        private static bool _isUserAuthenticated;
+        #region Fields
+
+        private static bool? _isUserAuthenticated;
+
+        #endregion
 
         #region Properties
 
@@ -15,7 +21,11 @@ namespace Garage.RL.Managers
         {
             get
             {
-                return _isUserAuthenticated;
+                if (!_isUserAuthenticated.HasValue)
+                {
+                    _isUserAuthenticated = AuthenticationService.IsUserAuthenticated();
+                }
+                return _isUserAuthenticated.Value;
             }
 
             private set
@@ -28,17 +38,22 @@ namespace Garage.RL.Managers
 
         #region Public Methods
 
-        public static void SignUp(Account account)
+        public async static Task SignUpAsync(SignUpViewModel viewModel)
         {
+            Guard.ExpectArgumentIsNotNull(() => viewModel);
 
+            await AuthenticationService.SignUpAsync(SignUpViewModel.MapToModel(viewModel));
         }
 
-        public static void SignIn(Account account)
+        public async static Task SignInAsync(SignInViewModel viewModel)
         {
+            Guard.ExpectArgumentIsNotNull(() => viewModel);
+
+            await AuthenticationService.SignInAsync(SignInViewModel.MapToModel(viewModel));
             IsUserAuthenticated = true;
         }
 
-        public static void SignOut()
+        public static void SignOutAsync()
         {
 
         }

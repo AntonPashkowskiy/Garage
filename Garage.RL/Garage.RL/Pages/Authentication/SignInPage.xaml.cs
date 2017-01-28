@@ -1,9 +1,8 @@
-﻿using Garage.RL.Behaviors;
+﻿using Garage.RL.Managers;
+using Garage.RL.Models.Authentication;
 using Garage.RL.Utilities.Behaviours;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -23,13 +22,13 @@ namespace Garage.RL.Pages.Authentication
 
         #region Events Handlers
 
-        public void SignInButtonClicked(object sender, EventArgs eventArgs)
+        public async Task SignInButtonClicked(object sender, EventArgs eventArgs)
         {
             ValidateSignInForm();
 
             if (IsSignInFormValid())
             {
-
+                await AuthenticationManager.SignInAsync(GetViewModel());
             }
         }
 
@@ -66,6 +65,15 @@ namespace Garage.RL.Pages.Authentication
             var isPasswordEntryValid = passwordEntry.Behaviors.All(b => BehaviorValidationUtil.IsValidBehavior<Entry>(b));
 
             return isLoginEntryValid && isPasswordEntryValid;
+        }
+
+        private SignInViewModel GetViewModel()
+        {
+            return new SignInViewModel
+            {
+                Login = loginEntry.Text,
+                Password = passwordEntry.Text
+            };
         }
 
         #endregion

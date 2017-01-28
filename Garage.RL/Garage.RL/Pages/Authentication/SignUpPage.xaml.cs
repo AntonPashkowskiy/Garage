@@ -1,8 +1,10 @@
-﻿using Garage.RL.Utilities.Behaviours;
+﻿using Garage.RL.Managers;
+using Garage.RL.Models.Authentication;
+using Garage.RL.Utilities.Behaviours;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Garage.RL.Pages.Authentication
@@ -20,12 +22,13 @@ namespace Garage.RL.Pages.Authentication
 
         #region Events Handlers
 
-        public void SignUpButtonClicked(object sender, EventArgs eventArgs)
+        public async Task SignUpButtonClicked(object sender, EventArgs eventArgs)
         {
             ValidateSignUpPage();
 
             if (IsSignUpPageValid())
             {
+                await AuthenticationManager.SignUpAsync(GetViewModel());
             }
         }
 
@@ -85,6 +88,18 @@ namespace Garage.RL.Pages.Authentication
                     break;
                 }
             }
+        }
+
+        private SignUpViewModel GetViewModel()
+        {
+            return new SignUpViewModel
+            {
+                Name = nameEntry.Text,
+                Login = loginEntry.Text,
+                Email = emailEntry.Text,
+                Password = passwordEntry.Text,
+                DrivingExpirience = (int)drivingExperienceSlider.Value
+            };
         }
 
         #endregion
