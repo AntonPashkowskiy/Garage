@@ -3,6 +3,8 @@ using Autofac;
 using XLabs.Ioc.Autofac;
 using Garage.BLL.Services.Interfaces;
 using System.Linq;
+using Garage.DAL.Services.Implementations.UnitOfWork;
+using Garage.DAL.Services.Interfaces.UnitOfWork;
 
 namespace Garage.RL.Droid.Infrastructure
 {
@@ -38,6 +40,18 @@ namespace Garage.RL.Droid.Infrastructure
                     containerBuilder.RegisterType(implementationClass).AsImplementedInterfaces().SingleInstance();
                 }
             }
+        }
+
+        private static void RegisterDataAccessLayerServices(ContainerBuilder containerBuilder)
+        {
+            RegisterUnitOfWork(containerBuilder);
+        }
+
+        private static void RegisterUnitOfWork(ContainerBuilder containerBuilder)
+        {
+            containerBuilder.RegisterType(typeof(UnitOfWork)).As<IUnitOfWork>()
+                            .WithParameter("pathToDatabase", DatabaseManager.GetPathToDatabase())
+                            .SingleInstance();
         }
 
         #endregion

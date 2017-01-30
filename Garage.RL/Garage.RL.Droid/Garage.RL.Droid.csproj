@@ -58,12 +58,32 @@
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="PCLAppConfig, Version=0.2.0.0, Culture=neutral, PublicKeyToken=7dc9bc9afb3fa588, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PCLAppConfig.0.3.2\lib\MonoAndroid10\PCLAppConfig.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PCLAppConfig.FileSystemStream.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PCLAppConfig.0.3.2\lib\MonoAndroid10\PCLAppConfig.FileSystemStream.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PCLAppConfig.FileSystemStream.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PCLAppConfig.0.3.2\lib\MonoAndroid10\PCLAppConfig.FileSystemStream.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PCLCrypto, Version=0.5.0.0, Culture=neutral, PublicKeyToken=d4421c8a4786956c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\PCLCrypto.0.5.0.14108\lib\monoandroid\PCLCrypto.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PCLCrypto.Abstractions, Version=0.5.0.0, Culture=neutral, PublicKeyToken=d4421c8a4786956c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\PCLCrypto.0.5.0.14108\lib\monoandroid\PCLCrypto.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PCLStorage, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PCLStorage.1.0.2\lib\monoandroid\PCLStorage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PCLStorage.Abstractions, Version=1.0.2.0, Culture=neutral, PublicKeyToken=286fe515a2c35b64, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PCLStorage.1.0.2\lib\monoandroid\PCLStorage.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -140,6 +160,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\DatabaseManager.cs" />
     <Compile Include="Infrastructure\DependencyInjectionManager.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -169,6 +190,10 @@
     <ProjectReference Include="..\..\Garage.BLL.Services\Garage.BLL.Services.csproj">
       <Project>{a9003977-a981-4492-ae7d-36f19920487b}</Project>
       <Name>Garage.BLL.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Garage.DAL.Services\Garage.DAL.Services.csproj">
+      <Project>{747aa515-8748-46d6-a987-6bb7abdc3879}</Project>
+      <Name>Garage.DAL.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Garage.RL\Garage.RL.csproj">
       <Project>{83e0aed6-609c-4725-a461-f708b24c0e5b}</Project>
